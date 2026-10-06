@@ -32,7 +32,7 @@ app.post('/regvisit', async (req, res)=>{
     console.log(req.body)
     try {
         await fs.open(regTextRef, 'a')
-        await fs.appendFile(regTextRef, req.body.nameInput + ';')
+        await fs.appendFile(regTextRef, req.body.nameInput + ';' + dateTimeET.dateET() + ';' + dateTimeET.timeET() + ';' + dateTimeET.weekDayET() + '\n')
         res.render('regvisit')
     } catch (err) {
         console.log(err)
@@ -50,6 +50,29 @@ app.get('/vanasona', async (req, res)=> {
     catch (err){
         console.log(err)
         res.render('wisdom', {wisdom: 'Kahjuks ühtegi vanasõna ei leitud!'})
+    }
+})
+
+app.get('/minulugu', async (req, res)=>{
+    try{
+        res.render('minulugu')
+    }
+    catch (err){
+        console.log(err)
+        res.render('minulugu')
+    }
+})
+
+app.get('/visits', async (req, res)=>{
+    try{
+        const data = await fs.readFile(regTextRef, 'utf8')
+        let lines = data.trim().split('\n').filter(line => line.trim() !== '')
+        let parts = (lines[lines.length - 1] || '').split(';')
+        res.render('visits', {name: parts[0], date: parts[1], time: parts[2], day: parts[3]})
+    }
+    catch (err){
+        console.log(err)
+        res.render('visits', {name: '', date: '', time: '', day: ''})
     }
 })
 
