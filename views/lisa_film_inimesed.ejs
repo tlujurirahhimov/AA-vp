@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="et">
+<head>
+	<meta charset="utf-8">
+	<title>Juri Rahhimov, veebiprogrammeerimine</title>
+</head>
+<body>
+    <img src="../pic/veebiprogrammeerimine_2026_AA.png" alt="banner">
+	<h1>Eesti filmid</h1>
+	<p>Siin saab lisada Eesti filmidega seotud inimesi.</p>
+	 	<li><a href="/">Avalehele</a></li>
+		<li><a href="/eestifilm">Eesti filmi avalehele</a></li>
+	
+	<h2>Lisa filmiinimene</h2>
+	<form method="POST">
+		<label for="firstNameInput">Filmiinemese eesnimi</label>
+		<input id="firstNameInput" name="firstNameInput" type="text" placeholder="eesnimi">
+		<br>
+		<label for="lastNameInput">Filmiinemese perekonnanimi</label>
+		<input id="lastNameInput" name="lastNameInput" type="text" placeholder="perekonnanimi">
+		<br>
+		<label for="bornInput">Filmiinemese sünnikuupäev</label>
+		<input id="bornInput" name="bornInput" type="date">
+		<br>
+		<label for="deceasedInput">Filmiinemese surmakuupäev</label>
+		<input id="deceasedInput" name="deceasedInput" type="date">
+		<br>
+		<input id="personSubmit" name="personSubmit" type="submit" value="Salvesta">
+	</form>
+	<p><%= notice %></p>
+	
+</body>
+</html>
